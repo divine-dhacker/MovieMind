@@ -7,13 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Quote Finder</h1>
-        <p>Type in a quote from a movie to find out more about it.</p>
-        <textarea id="speech-input" placeholder="Enter movie quote here..."></textarea>
-        <button id="search-btn">Search</button>
-        <div id="movie-details"></div>
-    </div>
+    <header>
+        <div class="container">
+            <h1>Quote Finder</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <p>Type in a quote from a movie to find out more about it.</p>
+            <textarea id="speech-input" placeholder="Enter movie quote here..."></textarea>
+            <button id="search-btn">Search</button>
+            <div id="loader" class="loader" style="display: none;"></div>
+            <div id="movie-details"></div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Quote Finder</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

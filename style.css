@@ -52,3 +52,20 @@ button:hover {
     margin-top: 2rem;
     text-align: left;
 }
+
+.movie-result {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.movie-result h3 {
+    margin-top: 0;
+}
+
+.movie-result img {
+    max-width: 100px;
+    float: left;
+    margin-right: 1rem;
+}

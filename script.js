@@ -11,16 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function searchShows(query) {
-        const url = `http://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`;
+        const url = `https://quotacle.com/api/v1/quotes?query=${encodeURIComponent(query)}`;
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                if (data && data.length > 0) {
-                    const show = data[0].show;
-                    displayShowDetails(show);
+                if (data && data.results && data.results.length > 0) {
+                    displayShowDetails(data.results);
                 } else {
-                    movieDetails.innerHTML = '<p>No shows found. Please try another speech.</p>';
+                    movieDetails.innerHTML = '<p>No quotes found. Please try another speech.</p>';
                 }
             })
             .catch(error => {
@@ -29,13 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    function displayShowDetails(show) {
-        movieDetails.innerHTML = `
-            <h2>${show.name}</h2>
-            <p><strong>Genres:</strong> ${show.genres.join(', ')}</p>
-            <p><strong>Status:</strong> ${show.status}</p>
-            <p><strong>Rating:</strong> ${show.rating.average ? show.rating.average : 'N/A'}</p>
-            <p><strong>Summary:</strong> ${show.summary}</p>
-        `;
+    function displayShowDetails(results) {
+        movieDetails.innerHTML = results.map(result => `
+            <div class="movie-result">
+                ${result.image_url ? `<img src="${result.image_url}" alt="${result.title}">` : ''}
+                <h3>${result.title}</h3>
+                <p><strong>Quote:</strong> "${result.quote}"</p>
+                <p><strong>Author:</strong> ${result.author}</p>
+                <div style="clear:both;"></div>
+            </div>
+        `).join('');
     }
 });
